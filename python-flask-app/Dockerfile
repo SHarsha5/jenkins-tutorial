@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-# Set working directory inside container
+
 WORKDIR /app
 
 # Copy requirements first (best practice)
