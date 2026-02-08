@@ -1,0 +1,29 @@
+pipeline{
+    agent any
+    environment {
+        IMAGE_NAME = "flask-portfolio"
+        CONTAINER_NAME = "flask-portfolio-app"
+    }
+    stages{
+        stage('Checkout'){
+            steps{
+                git 'https://github.com/SHarsha5/jenkins-tutorial.git'
+
+            }
+        }
+
+        stage('Build docker image'){
+            steps{
+                echo 'Building the Docker image...'
+                sh "docker build -t ${IMAGE_NAME} ."
+            }
+        }
+       
+        stage('Deploy'){
+            steps{
+                echo 'Deploying the Docker container...'
+                sh "docker run -d -p 5000:5000 --name ${CONTAINER_NAME} ${IMAGE_NAME}"
+            }
+        }
+    }
+}
