@@ -3,7 +3,7 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Copy requirements first (best practice)
+
 COPY requirements.txt .
 
 # Install dependencies
