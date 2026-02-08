@@ -14,9 +14,11 @@ pipeline{
 
         stage('Build docker image'){
             steps{
+                dir('python-flask-app') {
                 echo 'Building the Docker image...'
                 sh "docker build -t ${IMAGE_NAME} ."
-            }
+                }
+            }     
         }
        
         stage('Deploy'){
